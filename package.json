@@ -1,0 +1,12 @@
+{
+    "name": "wipi-bridge-ui",
+    "description": "This is the corresponding user interface for the wipi-bridge",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "flow.json",
+            "credentialsFile": "flow_cred.json"
+        }
+    }
+}
