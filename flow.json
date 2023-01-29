@@ -214,14 +214,13 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 210,
-        "y": 320,
+        "x": 230,
+        "y": 260,
         "wires": [
             [
                 "ec32ffa8.3f6f6",
                 "80ce12b.e5edff",
-                "9aa43ac5.df3728",
-                "19c1294d54b366be"
+                "9aa43ac5.df3728"
             ]
         ]
     },
@@ -1168,19 +1167,36 @@
         ]
     },
     {
-        "id": "19c1294d54b366be",
-        "type": "debug",
+        "id": "9b0e8a23cc1032d9",
+        "type": "ui_ui_control",
         "z": "f0a27113.452c7",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 340,
-        "y": 420,
+        "name": "",
+        "events": "all",
+        "x": 180,
+        "y": 300,
+        "wires": [
+            [
+                "ec32ffa8.3f6f6",
+                "80ce12b.e5edff",
+                "9aa43ac5.df3728"
+            ]
+        ]
+    },
+    {
+        "id": "1563e164888ba7cc",
+        "type": "ui_text",
+        "z": "f0a27113.452c7",
+        "group": "a1e7431b.229d5",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Network Connection (wlan1):",
+        "format": "",
+        "layout": "col-center",
+        "className": "",
+        "x": 1060,
+        "y": 680,
         "wires": []
     }
 ]
