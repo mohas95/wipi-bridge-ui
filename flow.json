@@ -944,7 +944,7 @@
         "y": 380,
         "wires": [
             [
-                "70f0dfb4de44addf"
+                "b54348ee716817fd"
             ],
             [],
             []
@@ -1105,24 +1105,33 @@
         "y": 380,
         "wires": [
             [
-                "1e2923c278f96a55"
+                "7071f0827f52745d"
             ]
         ]
     },
     {
-        "id": "1e2923c278f96a55",
-        "type": "debug",
+        "id": "b54348ee716817fd",
+        "type": "change",
         "z": "f0a27113.452c7",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1940,
-        "y": 300,
-        "wires": []
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "password",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2170,
+        "y": 320,
+        "wires": [
+            []
+        ]
     }
 ]
