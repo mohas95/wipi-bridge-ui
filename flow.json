@@ -214,13 +214,14 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 270,
+        "x": 210,
         "y": 320,
         "wires": [
             [
                 "ec32ffa8.3f6f6",
                 "80ce12b.e5edff",
-                "9aa43ac5.df3728"
+                "9aa43ac5.df3728",
+                "19c1294d54b366be"
             ]
         ]
     },
@@ -1165,5 +1166,21 @@
                 "013417e27c4e0f58"
             ]
         ]
+    },
+    {
+        "id": "19c1294d54b366be",
+        "type": "debug",
+        "z": "f0a27113.452c7",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 420,
+        "wires": []
     }
 ]
