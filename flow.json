@@ -1195,8 +1195,8 @@
         "format": "",
         "layout": "col-center",
         "className": "",
-        "x": 1070,
-        "y": 680,
+        "x": 590,
+        "y": 80,
         "wires": []
     },
     {
@@ -1204,7 +1204,7 @@
         "type": "ui_text",
         "z": "f0a27113.452c7",
         "group": "a1e7431b.229d5",
-        "order": 1,
+        "order": 6,
         "width": 0,
         "height": 0,
         "name": "",
@@ -1212,8 +1212,8 @@
         "format": "",
         "layout": "col-center",
         "className": "",
-        "x": 1050,
-        "y": 740,
+        "x": 570,
+        "y": 720,
         "wires": []
     }
 ]
