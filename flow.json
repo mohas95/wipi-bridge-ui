@@ -9,22 +9,24 @@
     {
         "id": "4d0f060d.dee7e8",
         "type": "ui_group",
-        "name": "Update",
+        "name": "UpdatePersonal",
         "tab": "907bbe60.b555f",
-        "order": 2,
+        "order": 3,
         "disp": false,
         "width": "6",
-        "collapse": false
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "a1e7431b.229d5",
         "type": "ui_group",
-        "name": "Settings",
+        "name": "Status",
         "tab": "907bbe60.b555f",
         "order": 1,
         "disp": false,
         "width": "6",
-        "collapse": false
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "907bbe60.b555f",
@@ -43,7 +45,8 @@
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
                 "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
+                "edited": true,
+                "reset": false
             },
             "darkTheme": {
                 "default": "#097479",
@@ -131,6 +134,28 @@
         }
     },
     {
+        "id": "c6d35e72fbaad139",
+        "type": "ui_group",
+        "name": "UpdateEnterprise",
+        "tab": "907bbe60.b555f",
+        "order": 4,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "007c76ea4b1029df",
+        "type": "ui_group",
+        "name": "Settings",
+        "tab": "907bbe60.b555f",
+        "order": 2,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "ec32ffa8.3f6f6",
         "type": "exec",
         "z": "f0a27113.452c7",
@@ -139,6 +164,7 @@
         "append": "",
         "useSpawn": "false",
         "timer": "",
+        "winHide": false,
         "oldrc": false,
         "name": "scan",
         "x": 430,
@@ -197,7 +223,7 @@
         "label": "Wifi",
         "tooltip": "",
         "place": "Select a WIFI",
-        "group": "4d0f060d.dee7e8",
+        "group": "007c76ea4b1029df",
         "order": 2,
         "width": 0,
         "height": 0,
@@ -206,6 +232,8 @@
         "options": [],
         "payload": "",
         "topic": "",
+        "topicType": "str",
+        "className": "",
         "x": 830,
         "y": 67,
         "wires": [
@@ -219,7 +247,7 @@
         "type": "ui_button",
         "z": "f0a27113.452c7",
         "name": "",
-        "group": "4d0f060d.dee7e8",
+        "group": "007c76ea4b1029df",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -228,10 +256,12 @@
         "tooltip": "",
         "color": "",
         "bgcolor": "",
+        "className": "",
         "icon": "",
         "payload": "true",
         "payloadType": "bool",
         "topic": "",
+        "topicType": "str",
         "x": 230,
         "y": 181,
         "wires": [
@@ -285,11 +315,12 @@
         "id": "80ce12b.e5edff",
         "type": "exec",
         "z": "f0a27113.452c7",
-        "command": "ifconfig wlan0",
+        "command": "ifconfig wlan1",
         "addpay": false,
         "append": "",
         "useSpawn": "false",
         "timer": "",
+        "winHide": false,
         "oldrc": false,
         "name": "getInfo",
         "x": 430,
@@ -412,9 +443,9 @@
         "type": "ui_form",
         "z": "f0a27113.452c7",
         "name": "",
-        "label": "Update",
+        "label": "WPA/WPA2 Personal",
         "group": "4d0f060d.dee7e8",
-        "order": 3,
+        "order": 1,
         "width": 0,
         "height": 0,
         "options": [
@@ -441,8 +472,11 @@
         "submit": "UPDATE",
         "cancel": "RESET",
         "topic": "",
-        "x": 1120,
-        "y": 67,
+        "topicType": "str",
+        "splitLayout": false,
+        "className": "",
+        "x": 1580,
+        "y": 60,
         "wires": [
             [
                 "562a8ec7.a7e76"
@@ -457,11 +491,15 @@
         "func": "\nmsg.payload = {ssid: msg.payload}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 970,
         "y": 67,
         "wires": [
             [
-                "4e417c79.0e9454"
+                "4e417c79.0e9454",
+                "33892b6af23d27cd"
             ]
         ]
     },
@@ -473,8 +511,11 @@
         "func": "var data = msg.payload\n\nvar command = `wpa_passphrase \"${data.ssid}\" \"${data.password}\" | sed '/#psk=\".*\"/d'`\n \nmsg.payload = command\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 1320,
-        "y": 67,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1800,
+        "y": 60,
         "wires": [
             [
                 "50f3b384.d92f4c"
@@ -486,14 +527,15 @@
         "type": "exec",
         "z": "f0a27113.452c7",
         "command": "",
-        "addpay": true,
+        "addpay": "payload",
         "append": "",
         "useSpawn": "false",
         "timer": "",
+        "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 1481,
-        "y": 67,
+        "x": 1970,
+        "y": 60,
         "wires": [
             [
                 "201a9fb.244ff6"
@@ -510,7 +552,10 @@
         "func": "var template = `sudo tee /etc/wpa_supplicant/wpa_supplicant.conf <<EOF\nctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\nupdate_config=1\ncountry=IT\n\n${msg.payload}\nEOF\\n\n`\n\nmsg.payload = template\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1680,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2180,
         "y": 60,
         "wires": [
             [
@@ -529,7 +574,7 @@
         "timer": "",
         "oldrc": false,
         "name": "updateConf",
-        "x": 1270,
+        "x": 1670,
         "y": 180,
         "wires": [
             [
@@ -550,7 +595,7 @@
         "timer": "",
         "oldrc": false,
         "name": "reconfigure",
-        "x": 1450,
+        "x": 1850,
         "y": 167,
         "wires": [
             [
@@ -568,7 +613,7 @@
         "func": "\nmsg.payload = msg.payload.trim() === 'OK' ? \"Wifi configuration updated successfully\" : \"Error while updating wifi configuration\"\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1650,
+        "x": 2050,
         "y": 154,
         "wires": [
             [
@@ -590,7 +635,7 @@
         "raw": false,
         "topic": "",
         "name": "",
-        "x": 1720,
+        "x": 2120,
         "y": 220,
         "wires": []
     },
@@ -601,8 +646,8 @@
         "name": "",
         "group": "a1e7431b.229d5",
         "order": 1,
-        "width": "0",
-        "height": "0",
+        "width": 0,
+        "height": 0,
         "passthru": false,
         "label": "Back",
         "tooltip": "",
@@ -612,7 +657,7 @@
         "payload": "Menu",
         "payloadType": "str",
         "topic": "",
-        "x": 130,
+        "x": 90,
         "y": 300,
         "wires": [
             [
@@ -629,6 +674,7 @@
         "append": "",
         "useSpawn": "false",
         "timer": "",
+        "winHide": false,
         "oldrc": false,
         "name": "getCurrentSSID",
         "x": 460,
@@ -672,5 +718,339 @@
                 "4e1b74b8.84f51c"
             ]
         ]
+    },
+    {
+        "id": "8a7b32633d7c643a",
+        "type": "ui_dropdown",
+        "z": "f0a27113.452c7",
+        "name": "",
+        "label": "Security type",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "007c76ea4b1029df",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "WPA/WPA2 Personal",
+                "value": "wpa_personal",
+                "type": "str"
+            },
+            {
+                "label": "WPA/WPA2 Enterprise",
+                "value": "wpa_enterprise",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 670,
+        "y": 620,
+        "wires": [
+            [
+                "22071790abc4212d"
+            ]
+        ]
+    },
+    {
+        "id": "0d3011db5a7a155f",
+        "type": "ui_ui_control",
+        "z": "f0a27113.452c7",
+        "name": "",
+        "events": "all",
+        "x": 1260,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "22c2d7a0651b82d6",
+        "type": "change",
+        "z": "f0a27113.452c7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"hide\":[\"Wifi_UpdateEnterprise\"],\"show\":[\"Wifi_UpdatePersonal\"],\"focus\":true}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1040,
+        "y": 580,
+        "wires": [
+            [
+                "0d3011db5a7a155f"
+            ]
+        ]
+    },
+    {
+        "id": "22071790abc4212d",
+        "type": "switch",
+        "z": "f0a27113.452c7",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "wpa_personal",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "wpa_enterprise",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 850,
+        "y": 620,
+        "wires": [
+            [
+                "22c2d7a0651b82d6"
+            ],
+            [
+                "fefd36b2257c738c"
+            ]
+        ]
+    },
+    {
+        "id": "fefd36b2257c738c",
+        "type": "change",
+        "z": "f0a27113.452c7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"hide\":[\"Wifi_UpdatePersonal\"],\"show\":[\"Wifi_UpdateEnterprise\"],\"focus\":true}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1040,
+        "y": 680,
+        "wires": [
+            [
+                "0d3011db5a7a155f"
+            ]
+        ]
+    },
+    {
+        "id": "33892b6af23d27cd",
+        "type": "ui_form",
+        "z": "f0a27113.452c7",
+        "name": "",
+        "label": "WPA/WPA2 Enterprise",
+        "group": "c6d35e72fbaad139",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "SSID",
+                "value": "ssid",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "PSK",
+                "value": "psk",
+                "type": "password",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Organization username",
+                "value": "username",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Organization password",
+                "value": "password",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "ssid": "",
+            "psk": "",
+            "username": "",
+            "password": ""
+        },
+        "payload": "",
+        "submit": "UPDATE",
+        "cancel": "RESET",
+        "topic": "",
+        "topicType": "str",
+        "splitLayout": false,
+        "className": "",
+        "x": 1600,
+        "y": 380,
+        "wires": [
+            [
+                "7071f0827f52745d"
+            ]
+        ]
+    },
+    {
+        "id": "7071f0827f52745d",
+        "type": "function",
+        "z": "f0a27113.452c7",
+        "name": "getPassphrase",
+        "func": "var data = msg.payload\n\nvar command = `wpa_passphrase \"${data.ssid}\" \"${data.password}\" | sed '/#psk=\".*\"/d'`\n \nmsg.payload = command\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1820,
+        "y": 380,
+        "wires": [
+            [
+                "fc56e9318b1816eb"
+            ]
+        ]
+    },
+    {
+        "id": "fc56e9318b1816eb",
+        "type": "exec",
+        "z": "f0a27113.452c7",
+        "command": "",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1990,
+        "y": 380,
+        "wires": [
+            [
+                "70f0dfb4de44addf"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "70f0dfb4de44addf",
+        "type": "function",
+        "z": "f0a27113.452c7",
+        "name": "updateWpasupplicant",
+        "func": "var template = `sudo tee /etc/wpa_supplicant/wpa_supplicant.conf <<EOF\nctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\nupdate_config=1\ncountry=IT\n\n${msg.payload}\nEOF\\n\n`\n\nmsg.payload = template\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2200,
+        "y": 380,
+        "wires": [
+            [
+                "41a604ff31ee4569"
+            ]
+        ]
+    },
+    {
+        "id": "41a604ff31ee4569",
+        "type": "exec",
+        "z": "f0a27113.452c7",
+        "command": "",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "updateConf",
+        "x": 1690,
+        "y": 500,
+        "wires": [
+            [
+                "67063ef2b089e25f"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "67063ef2b089e25f",
+        "type": "exec",
+        "z": "f0a27113.452c7",
+        "command": "sudo wpa_cli -i wlan0 reconfigure",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "reconfigure",
+        "x": 1870,
+        "y": 487,
+        "wires": [
+            [
+                "946f1202629714db"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "946f1202629714db",
+        "type": "function",
+        "z": "f0a27113.452c7",
+        "name": "showMessage",
+        "func": "\nmsg.payload = msg.payload.trim() === 'OK' ? \"Wifi configuration updated successfully\" : \"Error while updating wifi configuration\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 2070,
+        "y": 474,
+        "wires": [
+            [
+                "103f950dfbe747e4"
+            ]
+        ]
+    },
+    {
+        "id": "103f950dfbe747e4",
+        "type": "ui_toast",
+        "z": "f0a27113.452c7",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "",
+        "name": "",
+        "x": 2140,
+        "y": 540,
+        "wires": []
     }
 ]
