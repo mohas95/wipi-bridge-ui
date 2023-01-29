@@ -543,10 +543,11 @@
         "type": "exec",
         "z": "f0a27113.452c7",
         "command": "",
-        "addpay": true,
+        "addpay": "payload",
         "append": "",
         "useSpawn": "false",
         "timer": "",
+        "winHide": false,
         "oldrc": false,
         "name": "updateConf",
         "x": 1670,
@@ -703,8 +704,8 @@
         "topic": "topic",
         "topicType": "msg",
         "className": "",
-        "x": 290,
-        "y": 860,
+        "x": 390,
+        "y": 1360,
         "wires": [
             [
                 "22071790abc4212d"
@@ -717,8 +718,8 @@
         "z": "f0a27113.452c7",
         "name": "",
         "events": "all",
-        "x": 880,
-        "y": 860,
+        "x": 980,
+        "y": 1360,
         "wires": [
             []
         ]
@@ -742,8 +743,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 660,
-        "y": 820,
+        "x": 760,
+        "y": 1320,
         "wires": [
             [
                 "0d3011db5a7a155f"
@@ -772,8 +773,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 470,
-        "y": 860,
+        "x": 570,
+        "y": 1360,
         "wires": [
             [
                 "22c2d7a0651b82d6"
@@ -802,8 +803,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 660,
-        "y": 920,
+        "x": 760,
+        "y": 1420,
         "wires": [
             [
                 "0d3011db5a7a155f"
@@ -1407,8 +1408,8 @@
         "format": "Configure Network Connection",
         "layout": "col-center",
         "className": "",
-        "x": 510,
-        "y": 1060,
+        "x": 930,
+        "y": 80,
         "wires": []
     },
     {
@@ -1431,7 +1432,7 @@
             },
             {
                 "label": "Configure AP password",
-                "value": "ap_password",
+                "value": "ap_psk",
                 "type": "password",
                 "required": true,
                 "rows": null
@@ -1439,7 +1440,7 @@
         ],
         "formValue": {
             "ap_ssid": "",
-            "ap_password": ""
+            "ap_psk": ""
         },
         "payload": "",
         "submit": "submit",
@@ -1448,10 +1449,13 @@
         "topicType": "msg",
         "splitLayout": "",
         "className": "",
-        "x": 1070,
-        "y": 760,
+        "x": 390,
+        "y": 1020,
         "wires": [
-            []
+            [
+                "bed1e384708d26b0",
+                "91847216ad7f5da8"
+            ]
         ]
     },
     {
@@ -1490,6 +1494,115 @@
                 "16bbe0390262a0ce"
             ],
             [],
+            []
+        ]
+    },
+    {
+        "id": "bed1e384708d26b0",
+        "type": "function",
+        "z": "f0a27113.452c7",
+        "name": "updateHostAPD",
+        "func": "var template = `sudo tee /etc/hostapd/hostapd.conf <<EOF\n\n# update with relevant country\ncountry_code=CA\ninterface=wlan0\n\n## un-comment below line if setting up extended network (options 3)\n# bridge=br0\n\n## comment out below line if setting extended network (options 3)\ndriver=nl80211\n\nssid=${msg.payload.ap_ssid}\nhw_mode=g\nchannel=6\nwmm_enabled=0\nmacaddr_acl=0\nauth_algs=1\nignore_broadcast_ssid=0\nwpa=2\nwpa_passphrase=${msg.payload.ap_psk}\nwpa_key_mgmt=WPA-PSK\nwpa_pairwise=TKIP\nrsn_pairwise=CCMP\n\n\nEOF\\n\n`\n\nmsg.payload = template\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 1020,
+        "wires": [
+            [
+                "c9b06ca04267dff1"
+            ]
+        ]
+    },
+    {
+        "id": "c9b06ca04267dff1",
+        "type": "exec",
+        "z": "f0a27113.452c7",
+        "command": "",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "UpdateConf",
+        "x": 790,
+        "y": 1020,
+        "wires": [
+            [
+                "887636ec0619cfc7"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "887636ec0619cfc7",
+        "type": "exec",
+        "z": "f0a27113.452c7",
+        "command": "sudo systemctl restart hostapd",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "reconfigure",
+        "x": 990,
+        "y": 1000,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "91847216ad7f5da8",
+        "type": "change",
+        "z": "f0a27113.452c7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Attempting to reconfigure network access point, please wait a few seconds and refresh page",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 1140,
+        "wires": [
+            [
+                "9edecf42277fd5c7"
+            ]
+        ]
+    },
+    {
+        "id": "9edecf42277fd5c7",
+        "type": "ui_toast",
+        "z": "f0a27113.452c7",
+        "position": "dialog",
+        "displayTime": "5",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 830,
+        "y": 1140,
+        "wires": [
             []
         ]
     }
