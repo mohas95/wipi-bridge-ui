@@ -341,6 +341,9 @@
         "func": "var ip = msg.payload.match(/inet ([0-9\\.]+)/)[1]\nvar mask = msg.payload.match(/netmask ([0-9\\.]+)/)[1]\nvar broadcast = msg.payload.match(/broadcast ([0-9\\.]+)/)[1]\n\n\nnode.send({topic: 'ip', payload: ip})\nnode.send({topic: 'mask', payload: mask})\nnode.send({topic: 'broadcast', payload: broadcast})",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 640,
         "y": 248,
         "wires": [
@@ -630,7 +633,7 @@
         "id": "aa9d6712.91e718",
         "type": "ui_toast",
         "z": "f0a27113.452c7",
-        "position": "top right",
+        "position": "bottom right",
         "displayTime": "3",
         "highlight": "",
         "sendall": true,
@@ -1128,20 +1131,22 @@
         "id": "2c9413a714655d4b",
         "type": "ui_toast",
         "z": "f0a27113.452c7",
-        "position": "top right",
+        "position": "dialog",
         "displayTime": "5",
         "highlight": "",
         "sendall": true,
-        "outputs": 0,
+        "outputs": 1,
         "ok": "OK",
         "cancel": "",
         "raw": false,
         "className": "",
         "topic": "",
         "name": "",
-        "x": 1950,
+        "x": 1930,
         "y": 40,
-        "wires": []
+        "wires": [
+            []
+        ]
     },
     {
         "id": "c81218dcd7a34924",
