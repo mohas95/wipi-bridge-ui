@@ -961,7 +961,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2460,
+        "x": 2440,
         "y": 380,
         "wires": [
             [
@@ -1128,8 +1128,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 2150,
-        "y": 340,
+        "x": 2190,
+        "y": 380,
         "wires": [
             [
                 "70f0dfb4de44addf"
@@ -1148,8 +1148,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2600,
-        "y": 520,
+        "x": 2640,
+        "y": 380,
         "wires": []
     }
 ]
