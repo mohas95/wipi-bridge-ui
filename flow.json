@@ -1198,5 +1198,22 @@
         "x": 1070,
         "y": 680,
         "wires": []
+    },
+    {
+        "id": "a8cff62cad2fd5f9",
+        "type": "ui_text",
+        "z": "f0a27113.452c7",
+        "group": "a1e7431b.229d5",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "(WLAN0) Access Point :",
+        "format": "",
+        "layout": "col-center",
+        "className": "",
+        "x": 1050,
+        "y": 740,
+        "wires": []
     }
 ]
