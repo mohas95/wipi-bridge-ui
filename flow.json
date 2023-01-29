@@ -1408,5 +1408,48 @@
         "x": 510,
         "y": 1060,
         "wires": []
+    },
+    {
+        "id": "098e45fd7d4316ac",
+        "type": "ui_form",
+        "z": "f0a27113.452c7",
+        "name": "",
+        "label": "Configure AP",
+        "group": "a1e7431b.229d5",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "AP SSID",
+                "value": "ap_ssid",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "AP password",
+                "value": "ap_password",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "ap_ssid": "",
+            "ap_password": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "reset",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 1150,
+        "y": 1120,
+        "wires": [
+            []
+        ]
     }
 ]
