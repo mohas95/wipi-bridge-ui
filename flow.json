@@ -955,7 +955,7 @@
         "type": "function",
         "z": "f0a27113.452c7",
         "name": "updateWpasupplicant",
-        "func": "var template = `sudo tee /etc/wpa_supplicant/wpa_supplicant.conf <<EOF\nctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\nupdate_config=1\ncountry=CA\n\nnetwork={\n         ssid=${flow.get('ssid')}\n         scan_ssid=1\n         key_mgmt=WPA-EAP\n         pairwise=CCMP\n         group=CCMP\n         eap=PEAP\n         identity=${flow.get('username')}\n         password=hash:${flow.get('password')}\n         phase1=\"peaplabel=0\"\n         phase2=\"MSCHAPV2\"\n         id_str=\"mcgill\"\n}\n\nEOF\\n\n`\n\nmsg.payload = template\n\nreturn msg;",
+        "func": "var template = `sudo tee /etc/wpa_supplicant/wpa_supplicant.conf <<EOF\nctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\nupdate_config=1\ncountry=CA\n\nnetwork={\n         ssid=\"${flow.get('ssid')}\"\n         scan_ssid=1\n         key_mgmt=WPA-EAP\n         pairwise=CCMP\n         group=CCMP\n         eap=PEAP\n         identity=\"${flow.get('username')}\"\n         password=hash:${flow.get('password')}\n         phase1=\"peaplabel=0\"\n         phase2=\"MSCHAPV2\"\n         id_str=\"mcgill\"\n}\n\nEOF\\n\n`\n\nmsg.payload = template\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
