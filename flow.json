@@ -914,7 +914,8 @@
         "y": 460,
         "wires": [
             [
-                "921a4aadb46907a7"
+                "921a4aadb46907a7",
+                "0cb3dad70b13f6c4"
             ]
         ]
     },
@@ -1172,6 +1173,54 @@
         "wires": [
             [
                 "2c9413a714655d4b"
+            ]
+        ]
+    },
+    {
+        "id": "013417e27c4e0f58",
+        "type": "ui_toast",
+        "z": "f0a27113.452c7",
+        "position": "dialog",
+        "displayTime": "5",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 1930,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0cb3dad70b13f6c4",
+        "type": "change",
+        "z": "f0a27113.452c7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Attempting to connect to new network, please wait a few seconds and refresh page",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1680,
+        "y": 400,
+        "wires": [
+            [
+                "013417e27c4e0f58"
             ]
         ]
     }
