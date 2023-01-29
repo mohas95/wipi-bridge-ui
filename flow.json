@@ -1415,8 +1415,8 @@
         "id": "098e45fd7d4316ac",
         "type": "ui_form",
         "z": "f0a27113.452c7",
-        "name": "",
-        "label": "Configure AP",
+        "name": "Configure AP",
+        "label": "",
         "group": "a1e7431b.229d5",
         "order": 12,
         "width": 0,
@@ -1448,8 +1448,8 @@
         "topicType": "msg",
         "splitLayout": "",
         "className": "",
-        "x": 1150,
-        "y": 1120,
+        "x": 1070,
+        "y": 760,
         "wires": [
             []
         ]
@@ -1468,7 +1468,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 1020,
-        "y": 700,
+        "y": 680,
         "wires": []
     },
     {
