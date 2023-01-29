@@ -1402,7 +1402,7 @@
         "height": 0,
         "name": "Configure Network Connection:",
         "label": "",
-        "format": "Configure Network Connection:",
+        "format": "Configure Network Connection",
         "layout": "col-center",
         "className": "",
         "x": 510,
