@@ -1622,5 +1622,34 @@
         "x": 280,
         "y": 60,
         "wires": []
+    },
+    {
+        "id": "148ad168d7949afb",
+        "type": "inject",
+        "z": "f0a27113.452c7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "wpa_personal",
+        "payloadType": "str",
+        "x": 260,
+        "y": 1280,
+        "wires": [
+            [
+                "8a7b32633d7c643a"
+            ]
+        ]
     }
 ]
