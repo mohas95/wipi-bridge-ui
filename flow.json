@@ -222,7 +222,8 @@
                 "80ce12b.e5edff",
                 "9aa43ac5.df3728",
                 "ba145b1d24b68c74",
-                "65e3fce6261bdecf"
+                "65e3fce6261bdecf",
+                "9f0e28ad504255c2"
             ]
         ]
     },
@@ -1174,15 +1175,16 @@
         "z": "f0a27113.452c7",
         "name": "",
         "events": "all",
-        "x": 180,
-        "y": 300,
+        "x": 220,
+        "y": 320,
         "wires": [
             [
                 "ec32ffa8.3f6f6",
                 "80ce12b.e5edff",
                 "9aa43ac5.df3728",
                 "ba145b1d24b68c74",
-                "65e3fce6261bdecf"
+                "65e3fce6261bdecf",
+                "9f0e28ad504255c2"
             ]
         ]
     },
@@ -1307,7 +1309,7 @@
         "type": "ui_text",
         "z": "f0a27113.452c7",
         "group": "a1e7431b.229d5",
-        "order": 8,
+        "order": 9,
         "width": 0,
         "height": 0,
         "name": "AP IP",
@@ -1324,7 +1326,7 @@
         "type": "ui_text",
         "z": "f0a27113.452c7",
         "group": "a1e7431b.229d5",
-        "order": 9,
+        "order": 10,
         "width": 0,
         "height": 0,
         "name": "Netmask AP",
@@ -1341,7 +1343,7 @@
         "type": "ui_text",
         "z": "f0a27113.452c7",
         "group": "a1e7431b.229d5",
-        "order": 10,
+        "order": 11,
         "width": 0,
         "height": 0,
         "name": "Broadcast AP",
@@ -1366,7 +1368,7 @@
         "oldrc": false,
         "name": "getCurrentSSID AP",
         "x": 490,
-        "y": 680,
+        "y": 740,
         "wires": [
             [
                 "f0b3ba528f34449c"
@@ -1389,7 +1391,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 740,
-        "y": 700,
+        "y": 760,
         "wires": []
     },
     {
@@ -1416,7 +1418,7 @@
         "name": "",
         "label": "Configure AP",
         "group": "a1e7431b.229d5",
-        "order": 10,
+        "order": 12,
         "width": 0,
         "height": 0,
         "options": [
@@ -1449,6 +1451,45 @@
         "x": 1150,
         "y": 1120,
         "wires": [
+            []
+        ]
+    },
+    {
+        "id": "16bbe0390262a0ce",
+        "type": "ui_text",
+        "z": "f0a27113.452c7",
+        "group": "a1e7431b.229d5",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "name": "PSK AP",
+        "label": "PSK",
+        "format": "{{msg.payload || '---'}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1020,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "9f0e28ad504255c2",
+        "type": "exec",
+        "z": "f0a27113.452c7",
+        "command": "sudo cat /etc/hostapd/hostapd.conf |grep wpa_passphrase= | sed 's/wpa_passphrase=//g' | xargs",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "getPSK AP",
+        "x": 470,
+        "y": 660,
+        "wires": [
+            [
+                "16bbe0390262a0ce"
+            ],
+            [],
             []
         ]
     }
