@@ -168,7 +168,7 @@
         "oldrc": false,
         "name": "scan",
         "x": 430,
-        "y": 80,
+        "y": 160,
         "wires": [
             [
                 "e0d66c7a.647c9"
@@ -186,7 +186,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 660,
-        "y": 67,
+        "y": 147,
         "wires": [
             [
                 "617d9746.cbcbd8"
@@ -206,7 +206,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 260,
-        "y": 221,
+        "y": 301,
         "wires": [
             [
                 "ec32ffa8.3f6f6",
@@ -235,7 +235,7 @@
         "topicType": "str",
         "className": "",
         "x": 830,
-        "y": 67,
+        "y": 147,
         "wires": [
             [
                 "fc8462e2.6bc6e"
@@ -263,7 +263,7 @@
         "topic": "",
         "topicType": "str",
         "x": 230,
-        "y": 181,
+        "y": 261,
         "wires": [
             [
                 "ec32ffa8.3f6f6"
@@ -277,7 +277,7 @@
         "name": "onTab",
         "events": "all",
         "x": 130,
-        "y": 80,
+        "y": 160,
         "wires": [
             [
                 "ee0231ae.607de"
@@ -302,7 +302,7 @@
         "repair": false,
         "outputs": 1,
         "x": 271,
-        "y": 80,
+        "y": 160,
         "wires": [
             [
                 "ec32ffa8.3f6f6",
@@ -324,7 +324,7 @@
         "oldrc": false,
         "name": "getInfo",
         "x": 430,
-        "y": 181,
+        "y": 261,
         "wires": [
             [
                 "8a86d9a3.7ccca8"
@@ -342,7 +342,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 640,
-        "y": 168,
+        "y": 248,
         "wires": [
             [
                 "446ce308.eaab1c"
@@ -377,7 +377,7 @@
         "repair": false,
         "outputs": 3,
         "x": 810,
-        "y": 181,
+        "y": 261,
         "wires": [
             [
                 "d1ea316d.10c3d"
@@ -403,7 +403,7 @@
         "format": "{{msg.payload || '---'}}",
         "layout": "row-spread",
         "x": 990,
-        "y": 141,
+        "y": 221,
         "wires": []
     },
     {
@@ -419,7 +419,7 @@
         "format": "{{msg.payload || '---'}}",
         "layout": "row-spread",
         "x": 1000,
-        "y": 181,
+        "y": 261,
         "wires": []
     },
     {
@@ -435,7 +435,7 @@
         "format": "{{msg.payload || '---'}}",
         "layout": "row-spread",
         "x": 1000,
-        "y": 221,
+        "y": 301,
         "wires": []
     },
     {
@@ -476,10 +476,11 @@
         "splitLayout": false,
         "className": "",
         "x": 1580,
-        "y": 60,
+        "y": 140,
         "wires": [
             [
-                "562a8ec7.a7e76"
+                "562a8ec7.a7e76",
+                "c81218dcd7a34924"
             ]
         ]
     },
@@ -495,7 +496,7 @@
         "finalize": "",
         "libs": [],
         "x": 970,
-        "y": 67,
+        "y": 147,
         "wires": [
             [
                 "4e417c79.0e9454",
@@ -515,7 +516,7 @@
         "finalize": "",
         "libs": [],
         "x": 1800,
-        "y": 60,
+        "y": 140,
         "wires": [
             [
                 "50f3b384.d92f4c"
@@ -535,7 +536,7 @@
         "oldrc": false,
         "name": "",
         "x": 1970,
-        "y": 60,
+        "y": 140,
         "wires": [
             [
                 "201a9fb.244ff6"
@@ -556,7 +557,7 @@
         "finalize": "",
         "libs": [],
         "x": 2180,
-        "y": 60,
+        "y": 140,
         "wires": [
             [
                 "d288a86d.e0ba48"
@@ -575,7 +576,7 @@
         "oldrc": false,
         "name": "updateConf",
         "x": 1670,
-        "y": 180,
+        "y": 260,
         "wires": [
             [
                 "ecc743df.05dd"
@@ -597,11 +598,10 @@
         "oldrc": false,
         "name": "reconfigure",
         "x": 1850,
-        "y": 167,
+        "y": 247,
         "wires": [
             [
-                "2e12d3e8.51947c",
-                "eb612602656fa6aa"
+                "2e12d3e8.51947c"
             ],
             [],
             []
@@ -615,12 +615,14 @@
         "func": "\nmsg.payload = msg.payload.trim() === 'OK' ? \"Wifi configuration updated successfully\" : \"Error while updating wifi configuration\"\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 2050,
-        "y": 154,
+        "y": 234,
         "wires": [
             [
-                "aa9d6712.91e718",
-                "eb612602656fa6aa"
+                "aa9d6712.91e718"
             ]
         ]
     },
@@ -636,10 +638,11 @@
         "ok": "OK",
         "cancel": "",
         "raw": false,
+        "className": "",
         "topic": "",
         "name": "",
-        "x": 2120,
-        "y": 220,
+        "x": 2410,
+        "y": 240,
         "wires": []
     },
     {
@@ -661,7 +664,7 @@
         "payloadType": "str",
         "topic": "",
         "x": 90,
-        "y": 300,
+        "y": 380,
         "wires": [
             [
                 "49307dfc.36fce4"
@@ -681,7 +684,7 @@
         "oldrc": false,
         "name": "getCurrentSSID",
         "x": 460,
-        "y": 260,
+        "y": 340,
         "wires": [
             [
                 "6cff487b.f73b08"
@@ -703,7 +706,7 @@
         "format": "{{msg.payload || '---'}}",
         "layout": "row-spread",
         "x": 810,
-        "y": 260,
+        "y": 340,
         "wires": []
     },
     {
@@ -715,7 +718,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 640,
-        "y": 247,
+        "y": 327,
         "wires": [
             [
                 "4e1b74b8.84f51c"
@@ -752,8 +755,8 @@
         "topic": "topic",
         "topicType": "msg",
         "className": "",
-        "x": 670,
-        "y": 620,
+        "x": 290,
+        "y": 520,
         "wires": [
             [
                 "22071790abc4212d"
@@ -766,8 +769,8 @@
         "z": "f0a27113.452c7",
         "name": "",
         "events": "all",
-        "x": 1260,
-        "y": 620,
+        "x": 880,
+        "y": 520,
         "wires": [
             []
         ]
@@ -791,8 +794,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1040,
-        "y": 580,
+        "x": 660,
+        "y": 480,
         "wires": [
             [
                 "0d3011db5a7a155f"
@@ -821,8 +824,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 850,
-        "y": 620,
+        "x": 470,
+        "y": 520,
         "wires": [
             [
                 "22c2d7a0651b82d6"
@@ -851,8 +854,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1040,
-        "y": 680,
+        "x": 660,
+        "y": 580,
         "wires": [
             [
                 "0d3011db5a7a155f"
@@ -905,7 +908,7 @@
         "splitLayout": false,
         "className": "",
         "x": 1320,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "921a4aadb46907a7"
@@ -924,7 +927,7 @@
         "finalize": "",
         "libs": [],
         "x": 1760,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "fc56e9318b1816eb"
@@ -944,7 +947,7 @@
         "oldrc": false,
         "name": "",
         "x": 1990,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "b54348ee716817fd"
@@ -965,7 +968,7 @@
         "finalize": "",
         "libs": [],
         "x": 2440,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "41a604ff31ee4569"
@@ -985,7 +988,7 @@
         "oldrc": false,
         "name": "updateConf",
         "x": 1690,
-        "y": 500,
+        "y": 580,
         "wires": [
             [
                 "67063ef2b089e25f"
@@ -1007,7 +1010,7 @@
         "oldrc": false,
         "name": "reconfigure",
         "x": 1870,
-        "y": 487,
+        "y": 567,
         "wires": [
             [
                 "946f1202629714db"
@@ -1028,7 +1031,7 @@
         "finalize": "",
         "libs": [],
         "x": 2070,
-        "y": 474,
+        "y": 554,
         "wires": [
             [
                 "103f950dfbe747e4"
@@ -1049,8 +1052,8 @@
         "raw": false,
         "topic": "",
         "name": "",
-        "x": 2140,
-        "y": 540,
+        "x": 2530,
+        "y": 560,
         "wires": []
     },
     {
@@ -1087,7 +1090,7 @@
         "to": "",
         "reg": false,
         "x": 1540,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "7071f0827f52745d"
@@ -1114,7 +1117,7 @@
         "to": "",
         "reg": false,
         "x": 2190,
-        "y": 380,
+        "y": 460,
         "wires": [
             [
                 "70f0dfb4de44addf"
@@ -1122,19 +1125,49 @@
         ]
     },
     {
-        "id": "eb612602656fa6aa",
-        "type": "debug",
+        "id": "2c9413a714655d4b",
+        "type": "ui_toast",
         "z": "f0a27113.452c7",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2440,
-        "y": 120,
+        "position": "top right",
+        "displayTime": "5",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 1950,
+        "y": 40,
         "wires": []
+    },
+    {
+        "id": "c81218dcd7a34924",
+        "type": "change",
+        "z": "f0a27113.452c7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Attempting to connect to new network, please wait a few seconds and refresh page",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1680,
+        "y": 80,
+        "wires": [
+            [
+                "2c9413a714655d4b"
+            ]
+        ]
     }
 ]
