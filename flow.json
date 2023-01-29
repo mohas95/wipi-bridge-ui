@@ -588,11 +588,12 @@
         "id": "ecc743df.05dd",
         "type": "exec",
         "z": "f0a27113.452c7",
-        "command": "sudo wpa_cli -i wlan0 reconfigure",
+        "command": "sudo wpa_cli -i wlan1 reconfigure",
         "addpay": false,
         "append": "",
         "useSpawn": "false",
         "timer": "",
+        "winHide": false,
         "oldrc": false,
         "name": "reconfigure",
         "x": 1850,
@@ -964,7 +965,9 @@
         "x": 2440,
         "y": 380,
         "wires": [
-            []
+            [
+                "41a604ff31ee4569"
+            ]
         ]
     },
     {
@@ -993,11 +996,12 @@
         "id": "67063ef2b089e25f",
         "type": "exec",
         "z": "f0a27113.452c7",
-        "command": "sudo wpa_cli -i wlan0 reconfigure",
+        "command": "sudo wpa_cli -i wlan1 reconfigure",
         "addpay": false,
         "append": "",
         "useSpawn": "false",
         "timer": "",
+        "winHide": false,
         "oldrc": false,
         "name": "reconfigure",
         "x": 1870,
@@ -1018,6 +1022,9 @@
         "func": "\nmsg.payload = msg.payload.trim() === 'OK' ? \"Wifi configuration updated successfully\" : \"Error while updating wifi configuration\"\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 2070,
         "y": 474,
         "wires": [
