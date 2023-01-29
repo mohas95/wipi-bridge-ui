@@ -1191,11 +1191,11 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "Network Connection (wlan1):",
-        "format": "",
+        "label": "",
+        "format": "(wlan1) Network Connection :",
         "layout": "col-center",
         "className": "",
-        "x": 1060,
+        "x": 990,
         "y": 680,
         "wires": []
     }
