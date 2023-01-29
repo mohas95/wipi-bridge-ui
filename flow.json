@@ -7,16 +7,6 @@
         "info": ""
     },
     {
-        "id": "e1be076c28ec9d51",
-        "type": "junction",
-        "z": "f0a27113.452c7",
-        "x": 1900,
-        "y": 380,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "4d0f060d.dee7e8",
         "type": "ui_group",
         "name": "UpdatePersonal",
@@ -911,12 +901,11 @@
         "topicType": "str",
         "splitLayout": false,
         "className": "",
-        "x": 1600,
+        "x": 1320,
         "y": 380,
         "wires": [
             [
-                "7071f0827f52745d",
-                "e1be076c28ec9d51"
+                "921a4aadb46907a7"
             ]
         ]
     },
@@ -931,7 +920,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1820,
+        "x": 1760,
         "y": 380,
         "wires": [
             [
@@ -1087,10 +1076,24 @@
         "rules": [
             {
                 "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "",
-                "tot": "str"
+                "p": "ssid",
+                "pt": "flow",
+                "to": "payload.ssid",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "password",
+                "pt": "flow",
+                "to": "payload.password",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "username",
+                "pt": "flow",
+                "to": "payload.password",
+                "tot": "msg"
             }
         ],
         "action": "",
@@ -1098,10 +1101,28 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1580,
-        "y": 280,
+        "x": 1540,
+        "y": 380,
         "wires": [
-            []
+            [
+                "1e2923c278f96a55"
+            ]
         ]
+    },
+    {
+        "id": "1e2923c278f96a55",
+        "type": "debug",
+        "z": "f0a27113.452c7",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1940,
+        "y": 300,
+        "wires": []
     }
 ]
