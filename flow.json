@@ -1357,7 +1357,7 @@
         "id": "65e3fce6261bdecf",
         "type": "exec",
         "z": "f0a27113.452c7",
-        "command": "iwgetid",
+        "command": "iw dev wlan0 info |grep ssid | sed 's/ssid//g' | xargs",
         "addpay": false,
         "append": "",
         "useSpawn": "false",
@@ -1369,7 +1369,7 @@
         "y": 680,
         "wires": [
             [
-                "ae2fe3b1dd5e1c8e"
+                "f0b3ba528f34449c"
             ],
             [],
             []
@@ -1391,21 +1391,5 @@
         "x": 840,
         "y": 680,
         "wires": []
-    },
-    {
-        "id": "ae2fe3b1dd5e1c8e",
-        "type": "function",
-        "z": "f0a27113.452c7",
-        "name": "parseInfo",
-        "func": "var ssid = msg.payload.match(/ESSID:\"([^\"]+)\"/)[1]\n\n\nnode.send({topic: 'ssid', payload: ssid})\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 660,
-        "y": 667,
-        "wires": [
-            [
-                "f0b3ba528f34449c"
-            ]
-        ]
     }
 ]
