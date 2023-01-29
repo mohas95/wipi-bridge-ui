@@ -24,7 +24,7 @@
         "tab": "907bbe60.b555f",
         "order": 1,
         "disp": false,
-        "width": 7,
+        "width": 6,
         "collapse": false,
         "className": ""
     },
@@ -1195,7 +1195,7 @@
         "type": "ui_text",
         "z": "f0a27113.452c7",
         "group": "a1e7431b.229d5",
-        "order": 12,
+        "order": 1,
         "width": 0,
         "height": 0,
         "name": "(WLAN1) Network Connection :",
@@ -1420,7 +1420,7 @@
         "name": "Configure AP",
         "label": "",
         "group": "a1e7431b.229d5",
-        "order": 1,
+        "order": 12,
         "width": 0,
         "height": 0,
         "options": [
