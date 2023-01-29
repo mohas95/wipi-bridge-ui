@@ -7,6 +7,16 @@
         "info": ""
     },
     {
+        "id": "e1be076c28ec9d51",
+        "type": "junction",
+        "z": "f0a27113.452c7",
+        "x": 1900,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "4d0f060d.dee7e8",
         "type": "ui_group",
         "name": "UpdatePersonal",
@@ -458,7 +468,7 @@
             },
             {
                 "label": "Password",
-                "value": "password",
+                "value": "psk",
                 "type": "password",
                 "required": true,
                 "rows": null
@@ -466,7 +476,7 @@
         ],
         "formValue": {
             "ssid": "",
-            "password": ""
+            "psk": ""
         },
         "payload": "",
         "submit": "UPDATE",
@@ -508,7 +518,7 @@
         "type": "function",
         "z": "f0a27113.452c7",
         "name": "getPassphrase",
-        "func": "var data = msg.payload\n\nvar command = `wpa_passphrase \"${data.ssid}\" \"${data.password}\" | sed '/#psk=\".*\"/d'`\n \nmsg.payload = command\n\nreturn msg",
+        "func": "var data = msg.payload\n\nvar command = `wpa_passphrase \"${data.ssid}\" \"${data.psk}\" | sed '/#psk=\".*\"/d'`\n \nmsg.payload = command\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -549,7 +559,7 @@
         "type": "function",
         "z": "f0a27113.452c7",
         "name": "updateWpasupplicant",
-        "func": "var template = `sudo tee /etc/wpa_supplicant/wpa_supplicant.conf <<EOF\nctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\nupdate_config=1\ncountry=IT\n\n${msg.payload}\nEOF\\n\n`\n\nmsg.payload = template\n\nreturn msg;",
+        "func": "var template = `sudo tee /etc/wpa_supplicant/wpa_supplicant.conf <<EOF\nctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\nupdate_config=1\ncountry=CA\n\n${msg.payload}\nEOF\\n\n`\n\nmsg.payload = template\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -875,13 +885,6 @@
                 "rows": null
             },
             {
-                "label": "PSK",
-                "value": "psk",
-                "type": "password",
-                "required": true,
-                "rows": null
-            },
-            {
                 "label": "Organization username",
                 "value": "username",
                 "type": "text",
@@ -898,7 +901,6 @@
         ],
         "formValue": {
             "ssid": "",
-            "psk": "",
             "username": "",
             "password": ""
         },
@@ -913,7 +915,8 @@
         "y": 380,
         "wires": [
             [
-                "7071f0827f52745d"
+                "7071f0827f52745d",
+                "e1be076c28ec9d51"
             ]
         ]
     },
@@ -922,7 +925,7 @@
         "type": "function",
         "z": "f0a27113.452c7",
         "name": "getPassphrase",
-        "func": "var data = msg.payload\n\nvar command = `wpa_passphrase \"${data.ssid}\" \"${data.password}\" | sed '/#psk=\".*\"/d'`\n \nmsg.payload = command\n\nreturn msg",
+        "func": "var data = msg.payload\n\nvar command = `echo -n \"${data.password}\" | iconv -t utf16le | openssl md4 | sed 's/(stdin)= //g'`\n \nmsg.payload = command\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -963,13 +966,13 @@
         "type": "function",
         "z": "f0a27113.452c7",
         "name": "updateWpasupplicant",
-        "func": "var template = `sudo tee /etc/wpa_supplicant/wpa_supplicant.conf <<EOF\nctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\nupdate_config=1\ncountry=IT\n\n${msg.payload}\nEOF\\n\n`\n\nmsg.payload = template\n\nreturn msg;",
+        "func": "var template = `sudo tee /etc/wpa_supplicant/wpa_supplicant.conf <<EOF\nctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\nupdate_config=1\ncountry=CA\n\nnetwork={\n         ssid=\"wpa.mcgill.ca\"\n         scan_ssid=1\n         key_mgmt=WPA-EAP\n         pairwise=CCMP\n         group=CCMP\n         eap=PEAP\n         identity=${data.password}\n         password=hash:${msg.payload}\n         phase1=\"peaplabel=0\"\n         phase2=\"MSCHAPV2\"\n         id_str=\"mcgill\"\n}\n\n\n\n\n\nEOF\\n\n`\n\nmsg.payload = template\n\nreturn msg;",
         "outputs": 1,
-        "noerr": 0,
+        "noerr": 1,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2200,
+        "x": 2380,
         "y": 380,
         "wires": [
             [
@@ -982,10 +985,11 @@
         "type": "exec",
         "z": "f0a27113.452c7",
         "command": "",
-        "addpay": true,
+        "addpay": "payload",
         "append": "",
         "useSpawn": "false",
         "timer": "",
+        "winHide": false,
         "oldrc": false,
         "name": "updateConf",
         "x": 1690,
@@ -1052,5 +1056,52 @@
         "x": 2140,
         "y": 540,
         "wires": []
+    },
+    {
+        "id": "a49c564bee0e3051",
+        "type": "join",
+        "z": "f0a27113.452c7",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": "false",
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "x": 1570,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "921a4aadb46907a7",
+        "type": "change",
+        "z": "f0a27113.452c7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1580,
+        "y": 280,
+        "wires": [
+            []
+        ]
     }
 ]
