@@ -1423,14 +1423,14 @@
         "height": 0,
         "options": [
             {
-                "label": "AP SSID",
+                "label": "Configure AP SSID",
                 "value": "ap_ssid",
                 "type": "text",
                 "required": true,
                 "rows": null
             },
             {
-                "label": "AP password",
+                "label": "Configure AP password",
                 "value": "ap_password",
                 "type": "password",
                 "required": true,
