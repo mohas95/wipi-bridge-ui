@@ -1030,7 +1030,7 @@
                 "t": "set",
                 "p": "username",
                 "pt": "flow",
-                "to": "payload.password",
+                "to": "payload.username",
                 "tot": "msg"
             }
         ],
