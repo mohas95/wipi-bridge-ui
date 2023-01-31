@@ -17,7 +17,7 @@ WI-PI Bridge is a Raspberry PI(RPi) based Wi-Fi Bridge for routing clients to in
 User Access: Web-browser​
 
 #### Accessing through connected network connection
-Address: **wipi-bridge.local:1880/** (mdns) or **x.x.x.x:1880/** (x.x.x.x is the network IP of the WI-PI Brigdge assigned by the router)​
+Address: *wipi-bridge.local:1880/* (mdns) or *x.x.x.x:1880/* (x.x.x.x is the network IP of the WI-PI Brigdge assigned by the router)​
 
 #### Access without network connection(First time Connecting):​
 
