@@ -14,17 +14,14 @@ WI-PI Bridge is a Raspberry PI(RPi) based Wi-Fi Bridge for routing clients to in
 - Done, the WI-PI bridge should be working! Check your network wifi connections for the SSID [wipi_bridge]
 
 ### Connecting to the WI-PI bridge dashboard
-User Access: Web-browser​
+####Accessing through connected network connection
 
-#### Accessing through connected network connection
-Address: *wipi-bridge.local:1880/* (mdns) or *x.x.x.x:1880/* (x.x.x.x is the network IP of the WI-PI Brigdge assigned by the router)​
+- On web browser go to: *wipi-bridge.local:1880/* (mdns) or *x.x.x.x:1880/* (x.x.x.x is the network IP of the WI-PI Brigdge assigned by the router)​
 
-#### Access without network connection(First time Connecting):​
+####Access without network connection(First time Connecting):​
 
 - Connect client to Access Point (default: wipi_bridge, psk: adamchuk)​
-
-- On web browser go to: [](10.0.1.1:1880/​)
-
+- On web browser go to: *10.0.1.1:1880/​*
 - Configure settings
 
 
